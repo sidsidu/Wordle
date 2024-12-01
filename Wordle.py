@@ -116,7 +116,7 @@ word = word.upper()
 #print(word) 
 guesses =6
 guessedWords = []
-print("You have",guesses,"guesses")
+print(f"You have {guesses} guesses")
 Won=False
 aldready_guessed = 1
 def inWord(guess,word):
