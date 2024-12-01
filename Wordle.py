@@ -1,5 +1,9 @@
 import random
-from colorama import Fore
+class TextColors:
+    red = "\u001b[0;31m"
+    green = "\u001b[0;32m"
+    yellow = "\u001b[0;33m"
+    end = "\u001b[0m"
 wordlist = [
     "ABACK", "ABASE", "ABATE", "ABBey", "ABIDE", "ABOUT", "ABOVE", "ABYSS", "ACORN", "ACRID", "ACTOR", "ACUTE", 
     "ADAGE", "ADAPT", "ADMIT", "ADOBE", "ADOPT", "ADORE", "ADULT", "AFTER", "AGAIN", "AGAPE", "AGATE", "AGENT", 
@@ -109,7 +113,7 @@ wordlist = [
 ]
 word = wordlist[random.randint(0,len(wordlist))-1]
 word = word.upper()
-#print(word)
+#print(word) 
 guesses =6
 guessedWords = []
 print("You have",guesses,"guesses")
@@ -120,12 +124,12 @@ def inWord(guess,word):
     char = ''
     for i in range(5):
         if guess[i]==word[i]:
-            color = Fore.GREEN 
+            color = TextColors.green 
         elif guess[i] in word:
-            color = Fore.YELLOW
+            color = TextColors.yellow
         else:
-            color = Fore.RED
-        char =  color + guess[i] + Fore.RESET
+            color = TextColors.red
+        char =  color + guess[i] + TextColors.end
         rword.append(char)
     x= "  ".join(rword)
     print(x)
@@ -137,7 +141,6 @@ while guesses>0:
     guess = guess.upper()
     if len(guess) == 5:
         guessedWords.append(guess)
-        """ print(guessedWords[0]) """
         for i in range(aldready_guessed):
             inWord(guessedWords[i],word)
 
@@ -147,7 +150,7 @@ while guesses>0:
         if guess == word:
                 Won = True
                 break
-        print("\nYou have",guesses,"guesses left")
+        print(f"\nYou have {guesses} guesses left")
     else:
         print("Enter a 5 letter word")
 if Won:
